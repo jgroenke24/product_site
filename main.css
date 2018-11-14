@@ -456,26 +456,44 @@ p {
   background-color: #ebf5ee;
 }
 
-/* Signup */
-.signup {
+/* Contact */
+.contact {
   text-align: center;
 }
-.signup p {
+.contact p {
   margin-bottom: 1em;
 }
 label {
   color: #5f758e;
   font-weight: 700;
+  min-width: 300px;
 }
 input[type='text'],
 input[type='email'],
 input[type='textarea'] {
   display: block;
-  margin: 1em auto;
+  margin: 2em auto;
   width: 75%;
 }
 input[type='textarea'] {
-  height: 5em;
+  height: 10em;
+}
+
+.flex-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.flex-inputs {
+  min-width: 300px;
+  flex: 1;
+}
+
+.form-text {
+  flex: 1;
 }
 
 /* Footer */
