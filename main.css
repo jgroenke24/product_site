@@ -470,12 +470,15 @@ label {
 }
 input[type='text'],
 input[type='email'],
-input[type='textarea'] {
+textarea {
   display: block;
   margin: 2em auto;
   width: 75%;
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: solid 1px #5f758e;
 }
-input[type='textarea'] {
+textarea {
   height: 10em;
 }
 
@@ -501,6 +504,7 @@ input[type='textarea'] {
   text-align: center;
   color: #ebf5ee;
   padding: 2em;
+  line-height: 2rem;
 }
 .primary-footer {
   background: #5f758e;
@@ -511,9 +515,32 @@ input[type='textarea'] {
 .location {
   margin-bottom: 2em;
 }
-.location p {
+.location p,
+.social p {
   font-size: 1.5rem;
   font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.social-items {
+  display: flex;
+}
+
+.social-items a {
+  height: calc(4rem - 4px);
+  width: calc(4rem - 4px);
+  border: solid 2px #ebf5ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ebf5ee;
+  margin: 0 0.5rem;
+  transition: all 0.7s ease;
+}
+
+.social-items a:hover {
+  border-color: #f44;
+  background: #f44;
 }
 
 @media screen and (min-width: 480px) {
@@ -644,6 +671,10 @@ input[type='textarea'] {
   .slide-dots {
     left: 70%;
     bottom: 4em;
+  }
+  .primary-footer {
+    display: flex;
+    justify-content: space-around;
   }
 }
 
