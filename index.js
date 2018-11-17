@@ -1,60 +1,67 @@
-window.onscroll = () => fixNavBar();
+// Elements
+const hamburgerCircle = document.querySelector('.hamburger-circle');
+const hamburger = document.querySelector('#hamburger');
+const ex = document.querySelector('#ex');
+const mainNav = document.querySelector('.main-nav');
+const navLinks = document.querySelectorAll('.nav-link');
 
-const fixNavBar = () => {
-	let bar = document.getElementById("bar");
-	if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
-		bar.classList.remove("primary-nav");
-		bar.classList.add("fixed-nav");
+// Event Listeners
+window.addEventListener('scroll', fixNavBar);
+hamburgerCircle.addEventListener('click', handleHamburgerClick);
+navLinks.forEach(navLink => {
+  navLink.addEventListener('click', handleNavClick);
+});
+
+// Functions
+function fixNavBar() {
+  const bar = document.querySelector('#bar');
+  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    bar.classList.remove('primary-nav');
+    bar.classList.add('fixed-nav');
+  } else {
+    bar.classList.add('primary-nav');
+    bar.classList.remove('fixed-nav');
+  }
+}
+
+function handleHamburgerClick() {
+  if (hamburger.classList.contains('hidden')) {
+		hamburger.classList.remove('hidden');
+		ex.classList.add('hidden');
+		mainNav.classList.remove('show-nav');
 	} else {
-		bar.classList.add("primary-nav");
-		bar.classList.remove("fixed-nav");
+		ex.classList.remove('hidden');
+		hamburger.classList.add('hidden');
+		mainNav.classList.add('show-nav');
 	}
 }
 
+function handleNavClick() {
+  if (mainNav.classList.contains('show-nav')) {
+    mainNav.classList.remove('show-nav');
+    hamburger.classList.remove('hidden');
+    ex.classList.add('hidden');
+  }
+}
+
+
+// Carousel
 let slideIndex = 0;
 carousel();
 
 function carousel() {
-	let slides = document.getElementsByClassName("slide");
-	let dots = document.getElementsByClassName("slide-dot");
+	const slides = document.querySelectorAll('.slide');
+	const dots = document.querySelectorAll('.slide-dot');
 	for(let i = 0; i < slides.length; i++) {
-		slides[i].classList.add("slide-inactive");
-		dots[i].classList.remove("active");
+		slides[i].classList.add('slide-inactive');
+		dots[i].classList.remove('active');
 	}
 	slideIndex++;
 	if (slideIndex > slides.length) {
 		slideIndex = 1;
 	}
-	slides[slideIndex - 1].classList.remove("slide-inactive");
-	slides[slideIndex - 1].classList.add("slide-active");
-	dots[slideIndex - 1].classList.add("active");
+	slides[slideIndex - 1].classList.remove('slide-inactive');
+	slides[slideIndex - 1].classList.add('slide-active');
+	dots[slideIndex - 1].classList.add('active');
 	setTimeout(carousel, 7000);
-}
-
-let hamburgerCircle = document.querySelector(".hamburger-circle");
-let hamburger = document.getElementById("hamburger");
-let ex = document.getElementById("ex");
-let mainNav = document.querySelector(".main-nav");
-hamburgerCircle.addEventListener("click", () => {
-
-	if (hamburger.classList.contains("hidden")) {
-		hamburger.classList.remove("hidden");
-		ex.classList.add("hidden");
-		mainNav.classList.remove("show-nav");
-	} else {
-		ex.classList.remove("hidden");
-		hamburger.classList.add("hidden");
-		mainNav.classList.add("show-nav");
-	}
-});
-
-let navLinks = document.getElementsByClassName("nav-link");
-for(let i = 0; i < navLinks.length; i++) {
-	navLinks[i].addEventListener("click", () => {
-		if (mainNav.classList.contains("show-nav")) {
-			mainNav.classList.remove("show-nav");
-			hamburger.classList.remove("hidden");
-			ex.classList.add("hidden");
-		}
-	});
 }
