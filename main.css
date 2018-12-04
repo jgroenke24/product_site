@@ -522,6 +522,12 @@ textarea {
   margin-bottom: 1.5rem;
 }
 
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .social-items {
   display: flex;
 }
